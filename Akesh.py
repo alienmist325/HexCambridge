@@ -1,5 +1,6 @@
 from Main import e
 import time
+from MainFunctions import getBestAsk
 
 # Print the Order Book nicely
 def printOrderBook(ingredient_id):
@@ -60,8 +61,8 @@ print("A => B:" + str(round(AB,2)))
 print("B => A:" + str(round(BA,2)))
     
 
-printOrderBook('PHILIPS_A')
-printOrderBook('PHILIPS_B')
+#printOrderBook('PHILIPS_A')
+#printOrderBook('PHILIPS_B')
     
 #result = e.insert_order('PHILIPS_A', price=[*bids.keys()][0], volume=1, side='ask', order_type='limit')
 #print(f"Order Id: {result}")    
@@ -76,8 +77,9 @@ printOrderBook('PHILIPS_B')
 #time.sleep(60)
 
 
-e.insert_order("PHILIPS_A", price=80.7, volume=6, side='ask', order_type='ioc')
+e.insert_order("PHILIPS_A", price=getBestAsk(e.get_last_price_book('PHILIPS_A')), volume=1, side='bid', order_type='ioc')
+print("trade made")
 time.sleep(20)
-print(e.get_trade_history('PHILIPS_A'))
-print(e.get_trade_history('PHILIPS_B'))
-print(e.get_trade_tick_history('PHILIPS_A'))
+#print(e.get_trade_history('PHILIPS_A'))
+#print(e.get_trade_history('PHILIPS_B'))
+#print(e.get_trade_tick_history('PHILIPS_A'))

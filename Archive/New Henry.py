@@ -84,6 +84,7 @@ init_record_market(highLiq)
 print("c")
 currentTradeId = e.insert_order(lowLiq, price=predict_price(highLiq)[0]+0.0000003, volume=20, side='ask', order_type='limit')
 print("b")
+
 for i in range (0,100):
     print("a")
     # Assuming <= 20 sold
